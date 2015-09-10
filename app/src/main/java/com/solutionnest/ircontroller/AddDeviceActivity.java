@@ -1,5 +1,6 @@
 package com.solutionnest.ircontroller;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.solutionnest.irservice.ConfigurationFileService;
 
 
-public class AddDeviceActivity extends ActionBarActivity {
+public class AddDeviceActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +56,9 @@ public class AddDeviceActivity extends ActionBarActivity {
     }
     public void addRemote(View v)
     {
+        Intent startService = new Intent(this,ConfigurationFileService.class);
+        startService.putExtra("FILE_NAME", ((EditText)v.findViewById(R.id.deviceName)).getText());
+        /* TODO passing paramters from ui to service for file search and dwonload */
+        startService(new Intent(this, ConfigurationFileService.class));
     }
 }
