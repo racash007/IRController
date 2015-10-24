@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Select Device Type"
             android:id="@+id/lblDeviceType"
-            android:labelFor="@+id/spinner"
+            android:labelFor="@+id/deviceType"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#c06e6170" />
@@ -40,7 +40,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/deviceType"
+            android:id="@id/deviceType"
             android:spinnerMode="dropdown"
             android:layout_weight="2"
             android:background="@color/control_background_color"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Device brand"
-                android:labelFor="@+id/spinner"
+                android:labelFor="@+id/brandName"
                 android:id="@+id/lblBrand"
                 android:layout_weight="1"
                 android:textColor="#c06e6170" />
@@ -59,7 +59,7 @@
     <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/brandName"
+    android:id="@id/brandName"
     android:layout_weight="1"
          android:background="@color/control_background_color" />
 
