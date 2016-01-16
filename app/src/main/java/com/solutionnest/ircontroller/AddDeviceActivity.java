@@ -58,7 +58,7 @@ public class AddDeviceActivity extends FragmentActivity {
     public void addRemote(View v)
     {
         Intent startService = new Intent(this,ConfigurationFileService.class);
-        startService.putExtra("FILE_NAME", ((EditText)v.findViewById(R.id.deviceName)).getText());
+       // startService.putExtra("FILE_NAME", ((EditText)v.findViewById(R.id.deviceName)).getText());
         /* TODO passing paramters from ui to service for file search and dwonload */
         startService(new Intent(this, ConfigurationFileService.class));
     }
