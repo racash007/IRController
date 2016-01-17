@@ -11,4 +11,6 @@
         <item>Home Theatre</item>
         <item>Others</item>
     </string-array>
+    <string name="title_activity_remote_device">RemoteDeviceActivity</string>
+    <string name="hello_world">Hello world!</string>
 </resources>

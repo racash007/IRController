@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.solutionnest.bean.Device;
+import com.solutionnest.utils.constant.AppConstants;
+
 import java.io.DataInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,7 +17,7 @@ import java.net.URL;
 /**
  * Created by kanika on 1/1/2016.
  */
-public class FileDownloadTask extends AsyncTask<String, Void, Void> {
+public class FileDownloadTask extends AsyncTask<Device, Void, Void> {
     private
     Context ctx;
     public FileDownloadTask(Context ctx)
@@ -22,18 +25,16 @@ public class FileDownloadTask extends AsyncTask<String, Void, Void> {
         this.ctx = ctx;
     }
     @Override
-    protected Void doInBackground(String... urls) {
-
+    protected Void doInBackground(Device... devices) {
         Log.i("IRController", "Service started");
         try{
-        URL url = new URL("http://lirc.sourceforge.net/remotes/toshiba/CT-816");
+        URL url = new URL(AppConstants.URL+"/"+devices[0].getBrand()+"/"+devices[0].getRemoteModelNumber());
         InputStream is = url.openStream();
         DataInputStream dis = new DataInputStream(is);
 
         byte[] buffer = new byte[1024];
         int length;
-        //FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/" + "data/CT-816"));
-            FileOutputStream fos =  ctx.openFileOutput("CT-816",Context.MODE_MULTI_PROCESS);
+            FileOutputStream fos =  ctx.openFileOutput(devices[0].getRemoteModelNumber(),Context.MODE_MULTI_PROCESS);
         while ((length = dis.read(buffer))>0) {
             fos.write(buffer, 0, length);
         }
