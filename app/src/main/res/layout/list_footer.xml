@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/footer"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:layout_alignParentBottom="true"
+     android:orientation="horizontal"
+     >
+     <Button
+         android:layout_width="0dp"
+         android:layout_weight="0.50"
+         android:text="Add"
+         android:onClick="addDevice"
+         android:id="@+id/addDevice"
+         android:layout_height="match_parent"
+         />
+
+     <Button
+         android:layout_width="0dp"
+         android:layout_weight="0.50"
+         android:text="Delete"
+         android:onClick="deleteDevice"
+         android:id="@+id/deleteDevice"
+         android:layout_height="match_parent" />
+ </LinearLayout>
+

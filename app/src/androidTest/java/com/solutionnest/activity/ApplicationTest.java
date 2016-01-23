@@ -1,4 +1,4 @@
-package com.solutionnest.ircontroller;
+package com.solutionnest.activity;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

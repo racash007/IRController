@@ -11,7 +11,7 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:orientation="vertical"
-        tools:context="com.solutionnest.ircontroller.AddDeviceActivityFragment">
+        tools:context="com.solutionnest.fragment.AddDeviceFragment">
 
             <TextView
                 android:layout_width="match_parent"

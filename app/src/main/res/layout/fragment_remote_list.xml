@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.solutionnest.fragment.RemoteListFragment">
+<LinearLayout android:layout_width="fill_parent" android:id="@+id/listContainer"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:layout_above="@+id/footer"
+    android:layout_below="@+id/listHeader">
+    <ListView android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <TextView android:id="@+id/deviceName" android:layout_width="match_parent"
+        android:textSize="@dimen/listElementSize"
+        android:layout_height="@dimen/ListBoxSize" android:gravity="center" />
+</LinearLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Device List"
+        android:id="@+id/listHeader"
+        android:singleLine="true"
+        android:background="#f4438fd3"
+        android:textColor="#ffffffff"
+        android:layout_marginBottom="10dp" />
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:text="Add"
+            android:onClick="addDevice"
+            android:id="@+id/addDevice"
+            android:layout_height="match_parent"
+            android:background="#f4438fd3"
+            android:textSize="15dp"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="5dp"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:text="Delete"
+            android:onClick="deleteDevice"
+            android:id="@+id/deleteDevice"
+            android:layout_height="match_parent"
+            android:background="#f4438fd3"
+            android:textSize="15dp"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+

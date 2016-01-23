@@ -14,6 +14,7 @@ public class Device implements Serializable{
     private String deviceType;
     private Map<String,String> remoteIRConfiguration;
     private Map<String,String> remoteKeyCodes;
+    private String filepath;
 
     public String getDeviceName() {
         return deviceName;
@@ -69,5 +70,20 @@ public class Device implements Serializable{
 
     public void setRemoteKeyCodes(Map<String, String> remoteKeyCodes) {
         this.remoteKeyCodes = remoteKeyCodes;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "deviceName='" + deviceName + '\'' +
+                '}';
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 }

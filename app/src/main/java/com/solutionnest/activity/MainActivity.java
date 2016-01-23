@@ -1,42 +1,38 @@
-package com.solutionnest.ircontroller;
+package com.solutionnest.activity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.solutionnest.bean.Device;
+import com.solutionnest.fragment.AddDeviceFragment;
+import com.solutionnest.fragment.RemoteListFragment;
 import com.solutionnest.irexecuter.FileDownloadTask;
 import com.solutionnest.irexecuter.RemoteFileReadTask;
-import com.solutionnest.irservice.ConfigurationFileService;
+import com.solutionnest.listener.OnDeviceSelectionListener;
+import com.solutionnest.listener.OnFragmentInteractionListener;
 import com.solutionnest.utils.constant.AppConstants;
 import com.solutionnest.utils.db.ApplicationDBOpenHelper;
-import com.solutionnest.utils.receiver.DeviceValueReceiver;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 
-public class AddDeviceActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnDeviceSelectionListener,OnFragmentInteractionListener {
 
+    private static final int  CONTENT_VIEW_ID = 10101010;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_device);
-        Spinner spinner = (Spinner) findViewById(R.id.deviceType);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.device_type_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        getSupportFragmentManager().beginTransaction().add(R.id.mainActivity,new RemoteListFragment()).commit();
+       /* */
     }
 
 
@@ -61,24 +57,37 @@ public class AddDeviceActivity extends FragmentActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onDeviceSelected(Uri uri) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+
+    public void addDevice(View v)
+    {
+         getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity, new AddDeviceFragment()).commit();
+    }
+    public void deleteDevice(View v)
+    {
+
+    }
     public void backToList(View v)
     {
-       finish();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainActivity, new RemoteListFragment()).commit();
     }
+
     public void addRemote(View v)
     {
-       // Intent remoteFileDownloadService = new Intent(this,ConfigurationFileService.class);
         Device device = new Device();
-        device.setDeviceName(((EditText) findViewById(R.id.deviceName)).getText().toString());
-        device.setDeviceType(((Spinner) findViewById(R.id.deviceType)).getSelectedItem().toString());
-        device.setBrand(((EditText) findViewById(R.id.brandName)).getText().toString());
-        device.setRemoteModelNumber(((EditText) findViewById(R.id.modelNo)).getText().toString());
-       // remoteFileDownloadService.putExtra(AppConstants.DEVICE,device);
-       // startService(remoteFileDownloadService);
+        device.setDeviceName(((EditText) this.findViewById(R.id.deviceName)).getText().toString());
+        device.setDeviceType(((Spinner) this.findViewById(R.id.deviceType)).getSelectedItem().toString());
+        device.setBrand(((EditText) this.findViewById(R.id.brandName)).getText().toString());
+        device.setRemoteModelNumber(((EditText) this.findViewById(R.id.modelNo)).getText().toString());
         fetchDeviceDetails(device);
-        /*Intent intent = new Intent(this, RemoteDeviceActivity.class);
-        intent.putExtra(AppConstants.DEVICE,device);
-        startActivity(intent);*/
     }
     public Device fetchDeviceDetails(Device device)
     {
@@ -103,4 +112,5 @@ public class AddDeviceActivity extends FragmentActivity {
         Log.i("IRController", "fetchDeviceDetails Exit");
         return device;
     }
+
 }

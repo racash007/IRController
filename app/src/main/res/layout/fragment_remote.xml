@@ -19,21 +19,7 @@
         android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:layout_weight="0.1">
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.50"
-            android:layout_height="match_parent"
-            android:text="Add"
-            android:onClick="addDevice"
-            android:id="@+id/button" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.50"
-            android:layout_height="match_parent"
-            android:text="Delete"
-            android:onClick="deleteDevice"
-            android:id="@+id/button2" />
 
 
     </LinearLayout>
